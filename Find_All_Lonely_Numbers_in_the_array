@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> findLonely(vector<int>& v) {
+        map<int,int>m;
+        for(int i=0;i<v.size();i++)
+        {
+            m[v[i]]++;
+        }
+        vector<int>q;
+        for(auto it=m.begin();it!=m.end();it++)
+        {
+            int a=it->first;
+            int b=it->second;
+            if(b==1 && m[a-1]==0 && m[a+1]==0)
+            {
+                q.push_back(a);
+            }
+        }
+        return q;
+    }
+};
